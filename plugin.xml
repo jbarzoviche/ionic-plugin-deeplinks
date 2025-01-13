@@ -15,7 +15,7 @@
 		<engine name="cordova-android" version=">=11.0.0" />
 		<engine name="cordova-ios" version=">=6.2.0" />
 	</engines>
-	
+
 	<preference name="APP_DOMAIN_ALT_APP" default="cl.entel.empresas.app" />
 	<preference name="APP_DOMAIN_ALT_WWW" default="www.entel.cl" />
 	<preference name="APP_DOMAIN_ALT_DEV" default="entel-dev.outsystemsenterprise.com" />
@@ -66,8 +66,6 @@
 				<data android:scheme="https" />
 				<data android:host="$APP_DOMAIN_ALT_WWW" />
 				<data android:pathPrefix="/beneficios" />
-				<data android:path="/netflix" />
-				<data android:path="/netflix/" />
 			</intent-filter>
 			<!-- b2b.entel.cl -->
 			<intent-filter android:autoVerify="true">
