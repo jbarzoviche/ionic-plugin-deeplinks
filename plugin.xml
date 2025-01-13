@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	id="ionic-plugin-deeplinks" version="1.0.24-NTL">
+	<name>Ionic Deeplink Plugin</name>
+	<description>Ionic Deeplink Plugin</description>
+	<license>MIT</license>
+	<keywords>Ionic,deeplinks,deeplinking</keywords>
+	<repo>https://github.com/ionic-team/ionic-plugin-deeplink.git</repo>
+	<issue>https://github.com/ionic-team/ionic-plugin-deeplink/issues</issue>
+
+	<engines>
+		<engine name="cordova" version=">=11.0.0" />
+		<engine name="cordova-android" version=">=11.0.0" />
+		<engine name="cordova-ios" version=">=6.2.0" />
+	</engines>
+
+	<preference name="APP_DOMAIN_NAME_DYN" default="links.en.tel" />
+	<preference name="APP_DOMAIN_PATH_DYN" default="/" />
+	<preference name="APP_DOMAIN_ALT_APP" default="app.entel.cl" />
+	<preference name="APP_DOMAIN_ALT_WWW" default="www.entel.cl" />
+	<preference name="APP_DOMAIN_ALT_DEV" default="entel-dev.outsystemsenterprise.com" />
+	<preference name="APP_DOMAIN_ALT_TST" default="entel-tst.outsystemsenterprise.com" />
+	<preference name="APP_DOMAIN_ALT_MIPERFILPP" default="b2b-pp.entel.cl" />
+	<preference name="APP_DOMAIN_ALT_MIPERFIL" default="b2b-pp.entel.cl" />
+
+	<js-module src="www/deeplink.js" name="deeplink">
+		<runs />
+		<clobbers target="IonicDeeplink" />
+	</js-module>
+	
+	<!-- android -->
+	<platform name="android">
+		<config-file target="res/xml/config.xml" parent="/*">
+			<feature name="IonicDeeplinkPlugin">
+				<param name="android-package" value="io.ionic.deeplink.IonicDeeplink" />
+				<param name="onload" value="true" />
+			</feature>
+		</config-file>
+
+		<config-file target="config.xml" parent="/*">
+			<preference name="AndroidLaunchMode" value="singleTask" />
+		</config-file>
+
+		<config-file target="AndroidManifest.xml" parent="/manifest/application/activity">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data android:scheme="entel" />
+			</intent-filter>
+			<intent-filter android:autoVerify="true">
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data android:scheme="http" />
+				<data android:scheme="https" />
+				<data android:host="$APP_DOMAIN_NAME_DYN" />
+				<data android:pathPrefix="$APP_DOMAIN_PATH_DYN" />
+			</intent-filter>
+			<intent-filter android:autoVerify="true">
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data android:scheme="http" />
+				<data android:scheme="https" />
+				<data android:host="$APP_DOMAIN_ALT_APP" />
+				<data android:pathPrefix="/" />
+			</intent-filter>
+			<!-- www.entel.cl -->
+			<intent-filter android:autoVerify="true">
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data android:scheme="http" />
+				<data android:scheme="https" />
+				<data android:host="$APP_DOMAIN_ALT_WWW" />
+				<data android:pathPrefix="/beneficios" />
+				<data android:path="/netflix" />
+				<data android:path="/netflix/" />
+			</intent-filter>
+			<!-- miperfil.entel.cl -->
+			<intent-filter android:autoVerify="true">
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data android:scheme="http" />
+				<data android:scheme="https" />
+				<data android:host="$APP_DOMAIN_ALT_DEV" />
+				<data android:host="$APP_DOMAIN_ALT_TST" />
+				<data android:host="$APP_DOMAIN_ALT_MIPERFILPP" />
+				<data android:host="$APP_DOMAIN_ALT_MIPERFIL" />
+				<data android:path="/CL_Web_Reseller_Subscription_EU/NetflixLandingSubscribe" />
+				<data android:path="/CL_Web_Reseller_Subscription_EU/NetflixLandingSubscribe/" />
+			</intent-filter>
+		</config-file>
+
+		<source-file src="src/android/io/ionic/deeplink/IonicDeeplink.java"
+			target-dir="src/io/ionic/deeplink" />
+	</platform>
+
+	<!-- ios -->
+	<platform name="ios">
+		<config-file target="config.xml" parent="/*">
+			<feature name="IonicDeeplinkPlugin">
+				<param name="ios-package" value="IonicDeeplinkPlugin" onload="true" />
+			</feature>
+		</config-file>
+		<config-file target="*-Info.plist" parent="CFBundleURLTypes">
+			<array>
+				<dict>
+					<key>CFBundleTypeRole</key>
+					<string>Editor</string>
+					<key>CFBundleURLName</key>
+					<string>BUNDLE_ID</string>
+					<key>CFBundleURLSchemes</key>
+					<array>
+						<string>$PACKAGE_NAME</string>
+						<string>entel</string>
+					</array>
+				</dict>
+			</array>
+		</config-file>
+
+		<config-file target="*-Debug.plist" parent="com.apple.developer.associated-domains">
+			<array>
+				<string>applinks:$APP_DOMAIN_NAME_DYN</string>
+			</array>
+			<array>
+				<string>applinks:$APP_DOMAIN_ALT_APP</string>
+			</array>
+			<array>
+				<string>applinks:$APP_DOMAIN_ALT_WWW</string>
+			</array>
+			<array>
+				<string>applinks:$APP_DOMAIN_ALT_DEV</string>
+			</array>
+			<array>
+				<string>applinks:$APP_DOMAIN_ALT_TST</string>
+			</array>
+			<array>
+				<string>applinks:$APP_DOMAIN_ALT_MIPERFILPP</string>
+			</array>
+			<array>
+				<string>applinks:$APP_DOMAIN_ALT_MIPERFIL</string>
+			</array>
+		</config-file>
+
+		<config-file target="*-Release.plist" parent="com.apple.developer.associated-domains">
+			<array>
+				<string>applinks:$APP_DOMAIN_NAME_DYN</string>
+			</array>
+			<array>
+				<string>applinks:$APP_DOMAIN_ALT_APP</string>
+			</array>
+			<array>
+				<string>applinks:$APP_DOMAIN_ALT_WWW</string>
+			</array>
+			<array>
+				<string>applinks:$APP_DOMAIN_ALT_DEV</string>
+			</array>
+			<array>
+				<string>applinks:$APP_DOMAIN_ALT_TST</string>
+			</array>
+			<array>
+				<string>applinks:$APP_DOMAIN_ALT_MIPERFILPP</string>
+			</array>
+			<array>
+				<string>applinks:$APP_DOMAIN_ALT_MIPERFIL</string>
+			</array>
+		</config-file>
+
+		<source-file src="src/ios/AppDelegate+IonicDeeplink.m" />
+		<header-file src="src/ios/IonicDeeplinkPlugin.h" />
+		<source-file src="src/ios/IonicDeeplinkPlugin.m" />
+	</platform>
+</plugin>
