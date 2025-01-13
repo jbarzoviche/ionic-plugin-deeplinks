@@ -15,15 +15,13 @@
 		<engine name="cordova-android" version=">=11.0.0" />
 		<engine name="cordova-ios" version=">=6.2.0" />
 	</engines>
-
-	<preference name="APP_DOMAIN_NAME_DYN" default="links.en.tel" />
-	<preference name="APP_DOMAIN_PATH_DYN" default="/" />
-	<preference name="APP_DOMAIN_ALT_APP" default="app.entel.cl" />
+	
+	<preference name="APP_DOMAIN_ALT_APP" default="cl.entel.empresas.app" />
 	<preference name="APP_DOMAIN_ALT_WWW" default="www.entel.cl" />
 	<preference name="APP_DOMAIN_ALT_DEV" default="entel-dev.outsystemsenterprise.com" />
 	<preference name="APP_DOMAIN_ALT_TST" default="entel-tst.outsystemsenterprise.com" />
-	<preference name="APP_DOMAIN_ALT_MIPERFILPP" default="b2b-pp.entel.cl" />
-	<preference name="APP_DOMAIN_ALT_MIPERFIL" default="b2b-pp.entel.cl" />
+	<preference name="APP_DOMAIN_ALT_B2BPP" default="b2b-pp.entel.cl" />
+	<preference name="APP_DOMAIN_ALT_B2B" default="b2b.entel.cl" />
 
 	<js-module src="www/deeplink.js" name="deeplink">
 		<runs />
@@ -56,15 +54,6 @@
 				<category android:name="android.intent.category.BROWSABLE" />
 				<data android:scheme="http" />
 				<data android:scheme="https" />
-				<data android:host="$APP_DOMAIN_NAME_DYN" />
-				<data android:pathPrefix="$APP_DOMAIN_PATH_DYN" />
-			</intent-filter>
-			<intent-filter android:autoVerify="true">
-				<action android:name="android.intent.action.VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<category android:name="android.intent.category.BROWSABLE" />
-				<data android:scheme="http" />
-				<data android:scheme="https" />
 				<data android:host="$APP_DOMAIN_ALT_APP" />
 				<data android:pathPrefix="/" />
 			</intent-filter>
@@ -80,7 +69,7 @@
 				<data android:path="/netflix" />
 				<data android:path="/netflix/" />
 			</intent-filter>
-			<!-- miperfil.entel.cl -->
+			<!-- b2b.entel.cl -->
 			<intent-filter android:autoVerify="true">
 				<action android:name="android.intent.action.VIEW" />
 				<category android:name="android.intent.category.DEFAULT" />
@@ -89,10 +78,8 @@
 				<data android:scheme="https" />
 				<data android:host="$APP_DOMAIN_ALT_DEV" />
 				<data android:host="$APP_DOMAIN_ALT_TST" />
-				<data android:host="$APP_DOMAIN_ALT_MIPERFILPP" />
-				<data android:host="$APP_DOMAIN_ALT_MIPERFIL" />
-				<data android:path="/CL_Web_Reseller_Subscription_EU/NetflixLandingSubscribe" />
-				<data android:path="/CL_Web_Reseller_Subscription_EU/NetflixLandingSubscribe/" />
+				<data android:host="$APP_DOMAIN_ALT_B2BPP" />
+				<data android:host="$APP_DOMAIN_ALT_B2B" />
 			</intent-filter>
 		</config-file>
 
@@ -125,9 +112,6 @@
 
 		<config-file target="*-Debug.plist" parent="com.apple.developer.associated-domains">
 			<array>
-				<string>applinks:$APP_DOMAIN_NAME_DYN</string>
-			</array>
-			<array>
 				<string>applinks:$APP_DOMAIN_ALT_APP</string>
 			</array>
 			<array>
@@ -140,18 +124,15 @@
 				<string>applinks:$APP_DOMAIN_ALT_TST</string>
 			</array>
 			<array>
-				<string>applinks:$APP_DOMAIN_ALT_MIPERFILPP</string>
+				<string>applinks:$APP_DOMAIN_ALT_B2BPP</string>
 			</array>
 			<array>
-				<string>applinks:$APP_DOMAIN_ALT_MIPERFIL</string>
+				<string>applinks:$APP_DOMAIN_ALT_B2B</string>
 			</array>
 		</config-file>
 
 		<config-file target="*-Release.plist" parent="com.apple.developer.associated-domains">
 			<array>
-				<string>applinks:$APP_DOMAIN_NAME_DYN</string>
-			</array>
-			<array>
 				<string>applinks:$APP_DOMAIN_ALT_APP</string>
 			</array>
 			<array>
@@ -164,10 +145,10 @@
 				<string>applinks:$APP_DOMAIN_ALT_TST</string>
 			</array>
 			<array>
-				<string>applinks:$APP_DOMAIN_ALT_MIPERFILPP</string>
+				<string>applinks:$APP_DOMAIN_ALT_B2BPP</string>
 			</array>
 			<array>
-				<string>applinks:$APP_DOMAIN_ALT_MIPERFIL</string>
+				<string>applinks:$APP_DOMAIN_ALT_B2B</string>
 			</array>
 		</config-file>
 
