@@ -20,7 +20,7 @@
 	<preference name="APP_DOMAIN_ALT_B2BPP" default="b2b-pp.entel.cl" />
 	<preference name="APP_DOMAIN_ALT_B2B" default="b2b.entel.cl" />
 
-	<js-module src="www/deeplink.js" name="deeplink">
+	<js-module src="www/deeplink.js" name="DeeplinkPlugin">
 		<runs />
 		<clobbers target="Deeplink" />
 	</js-module>

@@ -23,11 +23,6 @@ var extend = function (out) {
 
 var Deeplink = {
 
-  /**
-   * How long to wait after a deeplink match before navigating.
-   * Default is 800ms which gives the app time to get back and then
-   * smoothly animate.
-   */
   NAVIGATION_DELAY: 800,
 
   canOpenApp: function (app, cb) {
@@ -136,8 +131,6 @@ var Deeplink = {
       return false;
     }
 
-    // Otherwise, we need to check each part
-
     var rp,
       pp;
 
@@ -192,13 +185,7 @@ var Deeplink = {
     return fragment;
   },
 
-  /**
-   * We're fairly flexible when it comes to matching a URL. We support
-   * host-less custom URL scheme matches like ionic://camera?blah but also support
-   * and match against fragments.
-   *
-   * This method tries to infer what the proper "path" is from the URL
-   */
+
   _getRealPath: function (data) {
 
     // 1. Let's just do the obvious and return the parsed 'path' first, if available.
