@@ -1,8 +1,8 @@
-#import "IonicDeeplinkPlugin.h"
+#import "DeeplinkPlugin.h"
 
 #import <Cordova/CDVAvailability.h>
 
-@implementation IonicDeeplinkPlugin
+@implementation DeeplinkPlugin
 
 - (void)pluginInitialize {
   _handlers = [[NSMutableArray alloc] init];
@@ -36,7 +36,7 @@
 }
 
 - (BOOL)handleLink:(NSURL *)url {
-  NSLog(@"IonicDeepLinkPlugin: Handle link (internal) %@", url);
+  NSLog(@"DeepLinkPlugin: Handle link (internal) %@", url);
   
   if(![self checkUrl:url]) {
     return NO;
@@ -83,7 +83,7 @@
 
   NSURL *url = userActivity.webpageURL;
   _lastEvent = [self createResult:url];
-  NSLog(@"IonicDeepLinkPlugin: Handle continueUserActivity (internal) %@", url);
+  NSLog(@"DeepLinkPlugin: Handle continueUserActivity (internal) %@", url);
 
   [self sendToJs];
 

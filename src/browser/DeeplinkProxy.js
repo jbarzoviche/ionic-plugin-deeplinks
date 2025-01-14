@@ -54,4 +54,4 @@ module.exports = {
   }
 };
 
-require("cordova/exec/proxy").add("IonicDeeplinkPlugin", module.exports);
+require("cordova/exec/proxy").add("DeeplinkPlugin", module.exports);

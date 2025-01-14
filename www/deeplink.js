@@ -2,7 +2,7 @@ var argscheck = require('cordova/argscheck'),
   utils = require('cordova/utils'),
   exec = require('cordova/exec');
 
-var PLUGIN_NAME = 'IonicDeeplinkPlugin';
+var PLUGIN_NAME = 'DeeplinkPlugin';
 
 var extend = function (out) {
   out = out || {};
@@ -21,7 +21,7 @@ var extend = function (out) {
 };
 
 
-var IonicDeeplink = {
+var Deeplink = {
 
   /**
    * How long to wait after a deeplink match before navigating.
@@ -275,4 +275,4 @@ var IonicDeeplink = {
   }
 };
 
-module.exports = IonicDeeplink;
+module.exports = Deeplink;

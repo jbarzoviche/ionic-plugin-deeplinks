@@ -2,13 +2,10 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	id="ionic-plugin-deeplinks" version="1.0.24-NTL">
-	<name>Ionic Deeplink Plugin</name>
+	id="ionic-plugin-deeplinks" version="1.0">
+	<name>Deeplink Plugin</name>
 	<description>Ionic Deeplink Plugin</description>
 	<license>MIT</license>
-	<keywords>Ionic,deeplinks,deeplinking</keywords>
-	<repo>https://github.com/ionic-team/ionic-plugin-deeplink.git</repo>
-	<issue>https://github.com/ionic-team/ionic-plugin-deeplink/issues</issue>
 
 	<engines>
 		<engine name="cordova" version=">=11.0.0" />
@@ -25,14 +22,14 @@
 
 	<js-module src="www/deeplink.js" name="deeplink">
 		<runs />
-		<clobbers target="IonicDeeplink" />
+		<clobbers target="Deeplink" />
 	</js-module>
 	
 	<!-- android -->
 	<platform name="android">
 		<config-file target="res/xml/config.xml" parent="/*">
-			<feature name="IonicDeeplinkPlugin">
-				<param name="android-package" value="io.ionic.deeplink.IonicDeeplink" />
+			<feature name="DeeplinkPlugin">
+				<param name="android-package" value="io.ionic.deeplink.Deeplink" />
 				<param name="onload" value="true" />
 			</feature>
 		</config-file>
@@ -81,15 +78,14 @@
 			</intent-filter>
 		</config-file>
 
-		<source-file src="src/android/io/ionic/deeplink/IonicDeeplink.java"
-			target-dir="src/io/ionic/deeplink" />
+		<source-file src="src/android/io/ionic/deeplink/Deeplink.java" target-dir="src/io/ionic/deeplink" />
 	</platform>
 
 	<!-- ios -->
 	<platform name="ios">
 		<config-file target="config.xml" parent="/*">
-			<feature name="IonicDeeplinkPlugin">
-				<param name="ios-package" value="IonicDeeplinkPlugin" onload="true" />
+			<feature name="DeeplinkPlugin">
+				<param name="ios-package" value="DeeplinkPlugin" onload="true" />
 			</feature>
 		</config-file>
 		<config-file target="*-Info.plist" parent="CFBundleURLTypes">
@@ -109,49 +105,25 @@
 		</config-file>
 
 		<config-file target="*-Debug.plist" parent="com.apple.developer.associated-domains">
-			<array>
-				<string>applinks:$APP_DOMAIN_ALT_APP</string>
-			</array>
-			<array>
-				<string>applinks:$APP_DOMAIN_ALT_WWW</string>
-			</array>
-			<array>
-				<string>applinks:$APP_DOMAIN_ALT_DEV</string>
-			</array>
-			<array>
-				<string>applinks:$APP_DOMAIN_ALT_TST</string>
-			</array>
-			<array>
-				<string>applinks:$APP_DOMAIN_ALT_B2BPP</string>
-			</array>
-			<array>
-				<string>applinks:$APP_DOMAIN_ALT_B2B</string>
-			</array>
+			<array><string>applinks:$APP_DOMAIN_ALT_APP</string></array>
+			<array><string>applinks:$APP_DOMAIN_ALT_WWW</string></array>
+			<array><string>applinks:$APP_DOMAIN_ALT_DEV</string></array>
+			<array><string>applinks:$APP_DOMAIN_ALT_TST</string></array>
+			<array><string>applinks:$APP_DOMAIN_ALT_B2BPP</string></array>
+			<array><string>applinks:$APP_DOMAIN_ALT_B2B</string></array>
 		</config-file>
 
 		<config-file target="*-Release.plist" parent="com.apple.developer.associated-domains">
-			<array>
-				<string>applinks:$APP_DOMAIN_ALT_APP</string>
-			</array>
-			<array>
-				<string>applinks:$APP_DOMAIN_ALT_WWW</string>
-			</array>
-			<array>
-				<string>applinks:$APP_DOMAIN_ALT_DEV</string>
-			</array>
-			<array>
-				<string>applinks:$APP_DOMAIN_ALT_TST</string>
-			</array>
-			<array>
-				<string>applinks:$APP_DOMAIN_ALT_B2BPP</string>
-			</array>
-			<array>
-				<string>applinks:$APP_DOMAIN_ALT_B2B</string>
-			</array>
+			<array><string>applinks:$APP_DOMAIN_ALT_APP</string></array>
+			<array><string>applinks:$APP_DOMAIN_ALT_WWW</string></array>
+			<array><string>applinks:$APP_DOMAIN_ALT_DEV</string></array>
+			<array><string>applinks:$APP_DOMAIN_ALT_TST</string></array>
+			<array><string>applinks:$APP_DOMAIN_ALT_B2BPP</string></array>
+			<array><string>applinks:$APP_DOMAIN_ALT_B2B</string></array>
 		</config-file>
 
-		<source-file src="src/ios/AppDelegate+IonicDeeplink.m" />
-		<header-file src="src/ios/IonicDeeplinkPlugin.h" />
-		<source-file src="src/ios/IonicDeeplinkPlugin.m" />
+		<source-file src="src/ios/AppDelegate+Deeplink.m" />
+		<header-file src="src/ios/DeeplinkPlugin.h" />
+		<source-file src="src/ios/DeeplinkPlugin.m" />
 	</platform>
 </plugin>

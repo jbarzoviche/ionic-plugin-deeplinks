@@ -45,7 +45,7 @@ Fill in the appropriate values as shown below:
 
 #### Ionic/Angular 2
 
-*note: make sure to call IonicDeeplink from a platform.ready or `deviceready` event*
+*note: make sure to call Deeplink from a platform.ready or `deviceready` event*
 
 Using [Ionic Native](https://github.com/ionic-team/ionic-native) (available in 1.2.4 or greater):
 
@@ -160,11 +160,11 @@ angular.module('myApp', ['ionic', 'ionic.native'])
 
 Ionic Native works with non-Ionic/Angular projects and can be accessed at `window.IonicNative` if imported.
 
-If you don't want to use Ionic Native, the plugin is available on `window.IonicDeeplink` with a similar API minus the observable callback:
+If you don't want to use Ionic Native, the plugin is available on `window.Deeplink` with a similar API minus the observable callback:
 
 ```javascript
 window.addEventListener('deviceready', function() {
-  IonicDeeplink.route({
+  Deeplink.route({
     '/product/:productId': {
       target: 'product',
       parent: 'products'

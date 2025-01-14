@@ -1,13 +1,13 @@
 #import "AppDelegate.h"
-#import "IonicDeeplinkPlugin.h"
+#import "DeeplinkPlugin.h"
 
-static NSString *const PLUGIN_NAME = @"IonicDeeplinkPlugin";
+static NSString *const PLUGIN_NAME = @"DeeplinkPlugin";
 
 /**
  *  Category for the AppDelegate that overrides application:continueUserActivity:restorationHandler method,
  *  so we could handle application launch when user clicks on the link in the browser.
  */
-@interface AppDelegate (IonicDeeplinkPlugin)
+@interface AppDelegate (DeeplinkPlugin)
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options;
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
@@ -16,7 +16,7 @@ static NSString *const PLUGIN_NAME = @"IonicDeeplinkPlugin";
 
 @end
 
-@implementation AppDelegate (IonicDeeplinkPlugin)
+@implementation AppDelegate (DeeplinkPlugin)
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
     NSMutableString *sourceApp = [[NSMutableString alloc] init];
@@ -34,7 +34,7 @@ static NSString *const PLUGIN_NAME = @"IonicDeeplinkPlugin";
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    IonicDeeplinkPlugin *plugin = [self.viewController getCommandInstance:PLUGIN_NAME];
+    DeeplinkPlugin *plugin = [self.viewController getCommandInstance:PLUGIN_NAME];
 
     if(plugin == nil) {
       NSLog(@"Unable to get instance of command plugin");
@@ -69,7 +69,7 @@ static NSString *const PLUGIN_NAME = @"IonicDeeplinkPlugin";
 
 - (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *restorableObjects))restorationHandler {
     // Pass it off to our plugin
-    IonicDeeplinkPlugin *plugin = [self.viewController getCommandInstance:PLUGIN_NAME];
+    DeeplinkPlugin *plugin = [self.viewController getCommandInstance:PLUGIN_NAME];
 
     if(plugin == nil) {
       return NO;
@@ -90,7 +90,7 @@ static NSString *const PLUGIN_NAME = @"IonicDeeplinkPlugin";
     }
 
     if(application.applicationState == UIApplicationStateInactive || application.applicationState == UIApplicationStateBackground) {
-      IonicDeeplinkPlugin *plugin = [self.viewController getCommandInstance:PLUGIN_NAME];
+      DeeplinkPlugin *plugin = [self.viewController getCommandInstance:PLUGIN_NAME];
 
       if(plugin == nil) {
         NSLog(@"Unable to get instance of command plugin");

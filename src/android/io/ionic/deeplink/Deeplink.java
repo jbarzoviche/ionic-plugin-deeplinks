@@ -1,13 +1,3 @@
-/**
- * Ionic Deeplinks Plugin.
- * License: MIT
- * <p>
- * Thanks to Eddy Verbruggen and nordnet for the great custom URl scheme and
- * unviversal links plugins this plugin was inspired by.
- * <p>
- * https://github.com/EddyVerbruggen/Custom-URL-scheme
- * https://github.com/nordnet/cordova-universal-links-plugin
- */
 package io.ionic.deeplink;
 
 import android.content.Context;
@@ -35,8 +25,8 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.TimeZone;
 
-public class IonicDeeplink extends CordovaPlugin {
-    private static final String TAG = "IonicDeeplinkPlugin";
+public class Deeplink extends CordovaPlugin {
+    private static final String TAG = "DeeplinkPlugin";
 
     private JSONObject lastEvent;
 
@@ -44,18 +34,18 @@ public class IonicDeeplink extends CordovaPlugin {
 
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
-        Log.d(TAG, "IonicDeepLinkPlugin: firing up...");
+        Log.d(TAG, "DeepLinkPlugin: firing up...");
         handleIntent(cordova.getActivity().getIntent());
     }
 
     @Override
     public void onNewIntent(Intent intent) {
-        Log.d(TAG, "IonicDeepLinkPlugin: onNewIntent...");
+        Log.d(TAG, "DeepLinkPlugin: onNewIntent...");
         handleIntent(intent);
     }
 
     public void handleIntent(Intent intent) {
-        Log.d(TAG, "IonicDeepLinkPlugin: handling intent...");
+        Log.d(TAG, "DeepLinkPlugin: handling intent...");
         final String intentString = intent.getDataString();
 
         // read intent
@@ -86,7 +76,7 @@ public class IonicDeeplink extends CordovaPlugin {
     }
 
     public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
-        Log.d(TAG, "IonicDeepLinkPlugin: execute: " + action);
+        Log.d(TAG, "DeepLinkPlugin: execute: " + action);
         switch (action) {
             case "onDeepLink":
                 addHandler(args, callbackContext);
@@ -107,7 +97,7 @@ public class IonicDeeplink extends CordovaPlugin {
      * handlers. We will only do this if we have active handlers so the message isn't lost.
      */
     private void consumeEvents() {
-        Log.d(TAG, "IonicDeepLinkPlugin: consumeEvents...");
+        Log.d(TAG, "DeepLinkPlugin: consumeEvents...");
         if (handler == null || lastEvent == null) {
             return;
         }
@@ -116,20 +106,20 @@ public class IonicDeeplink extends CordovaPlugin {
     }
 
     private void sendToJs(JSONObject event, CallbackContext callback) {
-        Log.d(TAG, "IonicDeepLinkPlugin: sendToJs...");
+        Log.d(TAG, "DeepLinkPlugin: sendToJs...");
         final PluginResult result = new PluginResult(PluginResult.Status.OK, event);
         result.setKeepCallback(true);
         callback.sendPluginResult(result);
     }
 
     private void addHandler(JSONArray args, final CallbackContext callbackContext) {
-        Log.d(TAG, "IonicDeepLinkPlugin: addHandler...");
+        Log.d(TAG, "DeepLinkPlugin: addHandler...");
         handler = callbackContext;
         consumeEvents();
     }
 
     private JSONObject _bundleToJson(Bundle bundle) {
-        Log.d(TAG, "IonicDeepLinkPlugin: _bundleToJson...");
+        Log.d(TAG, "DeepLinkPlugin: _bundleToJson...");
         if (bundle == null) {
             return new JSONObject();
         }
@@ -158,7 +148,7 @@ public class IonicDeeplink extends CordovaPlugin {
 
     //Wrap method not available in JSONObject API < 19
     private Object _wrap(Object o) {
-        Log.d(TAG, "IonicDeepLinkPlugin: _wrap...");
+        Log.d(TAG, "DeepLinkPlugin: _wrap...");
         if (o == null) {
             return null;
         }
@@ -199,7 +189,7 @@ public class IonicDeeplink extends CordovaPlugin {
      * Thanks to <a href="https://github.com/ohh2ahh/AppAvailability/blob/master/src/android/AppAvailability.java">...</a>
      */
     private void canOpenApp(String uri, final CallbackContext callbackContext) {
-        Log.d(TAG, "IonicDeepLinkPlugin: canOpenApp...");
+        Log.d(TAG, "DeepLinkPlugin: canOpenApp...");
         Context ctx = this.cordova.getActivity().getApplicationContext();
         final PackageManager pm = ctx.getPackageManager();
 
@@ -214,7 +204,7 @@ public class IonicDeeplink extends CordovaPlugin {
     }
 
     private void getHardwareInfo(JSONArray args, final CallbackContext callbackContext) {
-        Log.d(TAG, "IonicDeepLinkPlugin: getHardwareInfo...");
+        Log.d(TAG, "DeepLinkPlugin: getHardwareInfo...");
         String uuid = Settings.Secure.getString(this.cordova.getActivity().getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
 
         JSONObject j = new JSONObject();
@@ -234,34 +224,34 @@ public class IonicDeeplink extends CordovaPlugin {
     }
 
     private boolean isAmazonDevice() {
-        Log.d(TAG, "IonicDeepLinkPlugin: isAmazonDevice...");
+        Log.d(TAG, "DeepLinkPlugin: isAmazonDevice...");
         return Build.MANUFACTURER.equals("Amazon");
     }
 
     private String getTimeZoneID() {
-        Log.d(TAG, "IonicDeepLinkPlugin: getTimeZoneID...");
+        Log.d(TAG, "DeepLinkPlugin: getTimeZoneID...");
         TimeZone tz = TimeZone.getDefault();
         return (tz.getID());
     }
 
     private int getTimeZoneOffset() {
-        Log.d(TAG, "IonicDeepLinkPlugin: getTimeZoneOffset...");
+        Log.d(TAG, "DeepLinkPlugin: getTimeZoneOffset...");
         TimeZone tz = TimeZone.getDefault();
         return tz.getOffset(new Date().getTime()) / 1000 / 60;
     }
 
     private String getSDKVersion() {
-        Log.d(TAG, "IonicDeepLinkPlugin: getSDKVersion...");
+        Log.d(TAG, "DeepLinkPlugin: getSDKVersion...");
         return Build.VERSION.SDK_INT + "";
     }
 
     private String getOSVersion() {
-        Log.d(TAG, "IonicDeepLinkPlugin: getOSVersion...");
+        Log.d(TAG, "DeepLinkPlugin: getOSVersion...");
         return Build.VERSION.RELEASE;
     }
 
     private String getPlatform() {
-        Log.d(TAG, "IonicDeepLinkPlugin: getPlatform...");
+        Log.d(TAG, "DeepLinkPlugin: getPlatform...");
         String platform;
         if (isAmazonDevice()) {
             platform = "amazon-fireos";
