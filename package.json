@@ -1,24 +1,18 @@
 {
-  "name": "ionic-plugin-deeplinks",
-  "version": "1.0.24-NTL",
+  "name": "plugin-deeplinks",
+  "version": "1.0",
   "cordova": {
-    "id": "ionic-plugin-deeplinks",
+    "id": "plugin-deeplinks",
     "platforms": [
       "android",
       "ios"
     ]
   },
-  "description": "Ionic Deeplinks Plugin",
-  "repository": "https://github.com/ionic-team/ionic-plugin-deeplinks.git",
-  "issue": "https://github.com/ionic-team/ionic-plugin-deeplinks/issues",
+  "description": "Deeplinks Plugin",
   "keywords": [
-    "ionic",
     "cordova",
     "deeplink",
     "deeplinks",
-    "mobile",
-    "hybrid",
-    "ecosystem:cordova",
     "cordova-android",
     "cordova-ios"
   ],
@@ -28,6 +22,6 @@
     "node-version-compare": ">=1.0.1",
     "plist": ">=1.2.0"
   },
-  "author": "Max Lynch <max@ionic.io>",
+  "author": "James Barzoviche",
   "license": "MIT"
 }

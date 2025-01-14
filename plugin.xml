@@ -4,7 +4,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	id="ionic-plugin-deeplinks" version="1.0">
 	<name>Deeplink Plugin</name>
-	<description>Ionic Deeplink Plugin</description>
+	<description>Deeplink Plugin</description>
 	<license>MIT</license>
 
 	<engines>
