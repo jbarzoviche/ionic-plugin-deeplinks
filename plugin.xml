@@ -82,7 +82,7 @@
 					<key>CFBundleTypeRole</key>
 					<string>Editor</string>
 					<key>CFBundleURLName</key>
-					<string>BUNDLE_ID</string>
+					<string>$APP_DOMAIN_ALT_APP</string>
 					<key>CFBundleURLSchemes</key>
 					<array>
 						<string>$PACKAGE_NAME</string>
