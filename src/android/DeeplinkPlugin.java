@@ -25,7 +25,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.TimeZone;
 
-public class Deeplink extends CordovaPlugin {
+public class DeeplinkPlugin extends CordovaPlugin {
     private static final String TAG = "DeeplinkPlugin";
 
     private JSONObject lastEvent;
