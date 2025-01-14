@@ -1,4 +1,4 @@
-package io.ionic.deeplink;
+package io.deeplink;
 
 import android.content.Context;
 import android.content.Intent;

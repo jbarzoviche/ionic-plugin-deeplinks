@@ -2,7 +2,7 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	id="ionic-plugin-deeplinks" version="1.0">
+	id="plugin-deeplinks" version="1.0">
 	<name>Deeplink Plugin</name>
 	<description>Deeplink Plugin</description>
 	<license>MIT</license>
@@ -29,7 +29,7 @@
 	<platform name="android">
 		<config-file target="res/xml/config.xml" parent="/*">
 			<feature name="DeeplinkPlugin">
-				<param name="android-package" value="io.ionic.deeplink.Deeplink" />
+				<param name="android-package" value="io.deeplink.DeeplinkPlugin" />
 				<param name="onload" value="true" />
 			</feature>
 		</config-file>
@@ -78,7 +78,7 @@
 			</intent-filter>
 		</config-file>
 
-		<source-file src="src/android/io/ionic/deeplink/Deeplink.java" target-dir="src/io/ionic/deeplink" />
+		<source-file src="src/android/DeeplinkPlugin.java" target-dir="src/io/deeplink" />
 	</platform>
 
 	<!-- ios -->
