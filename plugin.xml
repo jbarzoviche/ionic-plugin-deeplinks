@@ -14,7 +14,6 @@
 	</engines>
 
 	<preference name="APP_DOMAIN_ALT_APP" default="cl.entel.empresas.app" />
-	<preference name="APP_DOMAIN_ALT_WWW" default="www.entel.cl" />
 	<preference name="APP_DOMAIN_ALT_DEV" default="entel-dev.outsystemsenterprise.com" />
 	<preference name="APP_DOMAIN_ALT_TST" default="entel-tst.outsystemsenterprise.com" />
 	<preference name="APP_DOMAIN_ALT_B2BPP" default="b2b-pp.entel.cl" />
@@ -43,7 +42,7 @@
 				<action android:name="android.intent.action.VIEW" />
 				<category android:name="android.intent.category.DEFAULT" />
 				<category android:name="android.intent.category.BROWSABLE" />
-				<data android:scheme="entel" />
+				<data android:scheme="entelempresas" />
 			</intent-filter>
 			<intent-filter android:autoVerify="true">
 				<action android:name="android.intent.action.VIEW" />
@@ -52,19 +51,7 @@
 				<data android:scheme="http" />
 				<data android:scheme="https" />
 				<data android:host="$APP_DOMAIN_ALT_APP" />
-				<data android:pathPrefix="/" />
 			</intent-filter>
-			<!-- www.entel.cl -->
-			<intent-filter android:autoVerify="true">
-				<action android:name="android.intent.action.VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<category android:name="android.intent.category.BROWSABLE" />
-				<data android:scheme="http" />
-				<data android:scheme="https" />
-				<data android:host="$APP_DOMAIN_ALT_WWW" />
-				<data android:pathPrefix="/beneficios" />
-			</intent-filter>
-			<!-- b2b.entel.cl -->
 			<intent-filter android:autoVerify="true">
 				<action android:name="android.intent.action.VIEW" />
 				<category android:name="android.intent.category.DEFAULT" />
@@ -75,6 +62,7 @@
 				<data android:host="$APP_DOMAIN_ALT_TST" />
 				<data android:host="$APP_DOMAIN_ALT_B2BPP" />
 				<data android:host="$APP_DOMAIN_ALT_B2B" />
+				<data android:pathPrefix="/CL_Web_B2B_EU" />
 			</intent-filter>
 		</config-file>
 
@@ -106,7 +94,6 @@
 
 		<config-file target="*-Debug.plist" parent="com.apple.developer.associated-domains">
 			<array><string>applinks:$APP_DOMAIN_ALT_APP</string></array>
-			<array><string>applinks:$APP_DOMAIN_ALT_WWW</string></array>
 			<array><string>applinks:$APP_DOMAIN_ALT_DEV</string></array>
 			<array><string>applinks:$APP_DOMAIN_ALT_TST</string></array>
 			<array><string>applinks:$APP_DOMAIN_ALT_B2BPP</string></array>
@@ -115,7 +102,6 @@
 
 		<config-file target="*-Release.plist" parent="com.apple.developer.associated-domains">
 			<array><string>applinks:$APP_DOMAIN_ALT_APP</string></array>
-			<array><string>applinks:$APP_DOMAIN_ALT_WWW</string></array>
 			<array><string>applinks:$APP_DOMAIN_ALT_DEV</string></array>
 			<array><string>applinks:$APP_DOMAIN_ALT_TST</string></array>
 			<array><string>applinks:$APP_DOMAIN_ALT_B2BPP</string></array>
