@@ -47,7 +47,7 @@
 				<category android:name="android.intent.category.BROWSABLE" />
 				<data android:scheme="entel" />
 			</intent-filter>
-			<intent-filter android:autoVerify="true">
+			<intent-filter android:autoVerify="false">
 				<action android:name="android.intent.action.VIEW" />
 				<category android:name="android.intent.category.DEFAULT" />
 				<category android:name="android.intent.category.BROWSABLE" />
@@ -56,7 +56,7 @@
 				<data android:host="$APP_DOMAIN_ALT_APP" />
 				<data android:pathPrefix="/Entel_Empresas_Admin" />
 			</intent-filter>
-			<intent-filter android:autoVerify="true">
+			<intent-filter android:autoVerify="false">
 				<action android:name="android.intent.action.VIEW" />
 				<category android:name="android.intent.category.DEFAULT" />
 				<category android:name="android.intent.category.BROWSABLE" />
